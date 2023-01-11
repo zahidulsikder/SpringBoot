@@ -3,7 +3,9 @@ package org.idb.Tourism.controller;
 import org.idb.Tourism.entity.Hotel;
 import org.idb.Tourism.entity.Room;
 import org.idb.Tourism.service.HotelService;
+import org.idb.Tourism.service.RoomFacilitiesService;
 import org.idb.Tourism.service.RoomService;
+import org.idb.Tourism.service.RoomtypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,16 @@ public class RoomController {
     @Autowired
     RoomService roomService;
 
+    @Autowired
+    RoomtypeService roomtypeService;
+
+
+    @Autowired
+    RoomFacilitiesService roomFacilitiesService;
+
+    @Autowired
+    HotelService hotelService;
+
 
 
     @RequestMapping("/roomhome")
@@ -24,31 +36,36 @@ public class RoomController {
         return "roomhome";
     }
 //----------------- save for room from--------------------
-    @RequestMapping("/add_room")
+    @RequestMapping("/room_list")
     public String addRoomForm(Model m){
-        m.addAttribute("room" , new Room());
+        m.addAttribute("roomlist" , roomService.getAllRoom());
+        m.addAttribute("roomtypelist" , roomtypeService.getAllRoomtype());
+        m.addAttribute("roomfaclist" , roomFacilitiesService.getAllRoomFacilities());
+        m.addAttribute("hotellist" , hotelService.getAllHotel());
 
-        return "addRoomform";
+        m.addAttribute("room" , new Room());
+        return "roomlist";
     }
 
-    @RequestMapping(value = "/room_save", method = RequestMethod.POST)
+    @RequestMapping(value = "/add_room", method = RequestMethod.POST)
     public  String roomSave(@ModelAttribute("room") Room r, Model m){
         roomService.saveRoom(r);
-        m.addAttribute("title", "Add Room");
-        return "roomlist";
+        return "redirect:/room_list";
     }
     @RequestMapping("/delete_room/{rId}")
     public String deleteRoom(@PathVariable("rId") Integer rId){
         roomService.deleteRoomById(rId);
-        return "redirect:/roomList";
+        return "redirect:/room_list";
     }
 
     @RequestMapping("/update_room/{rId}")
     public String updateRoom(@PathVariable("rId") Integer rId, Model m){
-        roomService.findRoomById(rId);
-        m.addAttribute("room", new Room());
-
-        return "addroomform";
+      Room r =  roomService.findRoomById(rId);
+        m.addAttribute("room", r);
+        m.addAttribute("roomtypelist", roomtypeService.getAllRoomtype());
+        m.addAttribute("roomfaclist", roomFacilitiesService.getAllRoomFacilities());
+        m.addAttribute("hotellist", hotelService.getAllHotel());
+        return "roomlist";
     }
 
 

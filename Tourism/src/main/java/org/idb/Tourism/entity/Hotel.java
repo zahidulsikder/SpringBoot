@@ -28,7 +28,7 @@ public class Hotel {
     private String haddress;
 
     @Column(length = 30)
-    private String hfeatcher;
+    private String hfetcher;
 
     @Column(length = 30, nullable = false)
     private String hemail;
@@ -38,6 +38,8 @@ public class Hotel {
 
     @Column(length = 30, nullable = false)
     private String hphone;
+
+    private String hwebsite;
 
     @Column(length = 30, nullable = false)
     private String haverageprice;
@@ -54,14 +56,9 @@ public class Hotel {
     @Column(length = 30)
     private String hrating;
 
-    @Column(length = 30)
-    private String hcountry;
-
     private String hlogo;
 
     private String hphoto;
-
-    private String hwebsite;
 
 
     @ManyToOne
