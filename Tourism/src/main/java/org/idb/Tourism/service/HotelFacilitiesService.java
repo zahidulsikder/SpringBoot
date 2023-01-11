@@ -2,7 +2,7 @@ package org.idb.Tourism.service;
 
 
 import org.idb.Tourism.entity.HotelFacilities;
-import org.idb.Tourism.repository.IHotelFacilities;
+import org.idb.Tourism.repository.IHotelFacilitiesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class HotelFacilitiesService {
 
     @Autowired
-    IHotelFacilities hotelFacilities;
+    IHotelFacilitiesRepo hotelFacilities;
 
     public void saveHFacilities(HotelFacilities hf){
         hotelFacilities.save(hf);

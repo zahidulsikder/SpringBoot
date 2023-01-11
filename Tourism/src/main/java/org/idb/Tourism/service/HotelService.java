@@ -14,12 +14,12 @@ public class HotelService {
     IHotelRepo hotelRepo;
 
     public  void  saveHotel(Hotel h){
-
         hotelRepo.save(h);
     }
 
     public void deleteHotelById(int hid){
         hotelRepo.deleteById(hid);
+
     }
 
     public List<Hotel> getAllHotel(){
@@ -27,12 +27,8 @@ public class HotelService {
         return hotelRepo.findAll();
     }
 
-
     public  Hotel findHotelById(int hid){
-
         return hotelRepo.findById(hid).get();
     }
-
-
 
 }

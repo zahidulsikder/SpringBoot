@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HotelFacilitiesController {
@@ -14,40 +15,36 @@ public class HotelFacilitiesController {
     @Autowired
     HotelFacilitiesService hotelFacilitiesService;
 
-    @RequestMapping("/add_h_fac_form")
-    public String hFacAddForm(Model m) {
+    @RequestMapping("/h_fac_list")
+    public String hFacLsit(Model m) {
+        m.addAttribute("hfList",hotelFacilitiesService.getALlHFacilities());
         m.addAttribute("hfacilities", new HotelFacilities());
-        return "hfacrform";
+        return "hotelfacilitieslist";
     }
 
-    @RequestMapping("/add_h_facilities")
+    @RequestMapping(value = "/add_h_facilities", method = RequestMethod.POST)
     public String hFacAdd(@ModelAttribute("hfacilities") HotelFacilities hf, Model m) {
+
         hotelFacilitiesService.saveHFacilities(hf);
-        m.addAttribute("title", "hfacilities");
-        return "redirect:/hfaclist";
-
+        return "redirect:/h_fac_list";
     }
 
-    @RequestMapping("/all_h_fac_list")
-    public  String hFacView(Model m){
-        m.addAttribute("hfacview",hotelFacilitiesService.getALlHFacilities());
-        return "hfaclist";
-    }
+
 
     @RequestMapping("/delete_hfacilities/{hfacid}")
     public  String deleteHFac(@ModelAttribute("hfacid") Integer hfacid ){
         hotelFacilitiesService.deleteHFacById(hfacid);
-        return "redirect:/hfaclist";
+        return "redirect:/h_fac_list";
     }
 
 
-    @RequestMapping("/edit__hfacilities/{hfacid}")
+    @RequestMapping("/edit_hfacilities/{hfacid}")
     public String editHFac(@ModelAttribute("hfacid") Integer hfacid, Model m){
 
-        hotelFacilitiesService.findHFacById(hfacid);
-        m.addAttribute("hflist", new HotelFacilities());
+        HotelFacilities r= hotelFacilitiesService.findHFacById(hfacid);
+        m.addAttribute("hfacilities", r);
 
-        return "hfacrform";
+        return "hotelfacilitieslist";
     }
 
 }

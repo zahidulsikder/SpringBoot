@@ -65,11 +65,12 @@ public class Hotel {
 
 
     @ManyToOne
-    @JoinColumn(name = "rid_fk")
-    RoomDetails roomDetails;
+    @JoinColumn(name = "location_id")
+    Location location;
 
-
-
+    @ManyToOne
+    @JoinColumn(name = "hotelFacilities_id")
+    HotelFacilities hotelFacilities;
 
 
 
