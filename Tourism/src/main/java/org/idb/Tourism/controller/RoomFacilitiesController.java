@@ -17,13 +17,17 @@ public class RoomFacilitiesController {
     @Autowired
     RoomFacilitiesService service;
 
-
+    @RequestMapping("/roomfacilities_form")
+    public String roomFacilities_form(Model m){
+        m.addAttribute("rfList", new RoomFacilities());
+        m.addAttribute("rfaciList",service.getAllRoomFacilities());
+        return "roomfacilities-form";
+    }
 
     @RequestMapping("/roomfacilities")
     public String allRoomFacilities(Model m){
         m.addAttribute("rfaciList",service.getAllRoomFacilities());
         m.addAttribute("rfList", new RoomFacilities());
-
         return "roomfacilitieslist";
 
     }
@@ -41,7 +45,7 @@ public class RoomFacilitiesController {
     public String roomfacilitiesUpdateForm(@PathVariable("rfId") Integer rfId, Model m){
         RoomFacilities r = service.findRoomFacilitiesById(rfId);
         m.addAttribute("rfList", r);
-        return "roomfacilitieslist";
+        return "roomfacilities-form";
 
     }
 

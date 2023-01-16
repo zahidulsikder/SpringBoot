@@ -22,7 +22,8 @@ public class LocationService {
     }
 
     public List<Location> getAllLocation(){
-    return lRepo.findAll();
+
+        return lRepo.findAll();
     }
 
     public  Location findLocationById(int lid){

@@ -98,54 +98,54 @@
                 <div class="row row-deck">
                     <div class="col-md-12 ">
                         <div class="card ">
-                            <div class="card-body m-5 col-md-12 col-sm-12">
-                                <h3 class="text-center">Room Type</h3>
+<!--                            <div class="card-body m-5 col-md-12 col-sm-12">-->
+<!--                                <h3 class="text-center">Room Type</h3>-->
 
-                                <form th:action="@{/save_roomtype}" th:object="${roomtype}" method="post">
-                                    <input type="hidden" th:field="*{rtid}"/>
+<!--                                <form th:action="@{/save_roomtype}" th:object="${roomtype}" method="post">-->
+<!--                                    <input type="hidden" th:field="*{rtid}"/>-->
 
-                                    <div>
-                                        <label  class="col-sm-2  col-form-label">Type</label>
-                                    </div>
-
-
-                                    <div class="col-sm-11  col-md-11">
-                                        <input type="text" class="form-control" th:field="*{rtName}"/>
-                                    </div>
+<!--                                    <div>-->
+<!--                                        <label  class="col-sm-2  col-form-label">Type</label>-->
+<!--                                    </div>-->
 
 
-                                    <div>
-                                        <label  class="col-sm-4   col-form-label">Description</label>
-                                    </div>
+<!--                                    <div class="col-sm-11  col-md-11">-->
+<!--                                        <input type="text" class="form-control" th:field="*{rtName}"/>-->
+<!--                                    </div>-->
 
 
-                                    <div class="col-sm-11 col-md-11">
-                                        <input type="text" class="form-control" th:field="*{rtDescription}"/>
-                                    </div>
+<!--                                    <div>-->
+<!--                                        <label  class="col-sm-4   col-form-label">Description</label>-->
+<!--                                    </div>-->
 
 
-                                    <div>
-                                        <label  class="col-sm-4   col-form-label">Keyword</label>
-                                    </div>
+<!--                                    <div class="col-sm-11 col-md-11">-->
+<!--                                        <input type="text" class="form-control" th:field="*{rtDescription}"/>-->
+<!--                                    </div>-->
 
 
-                                    <div class="col-sm-11 col-md-11">
-                                        <input type="text" class="form-control" th:field="*{rtKey}"/>
-                                    </div>
+<!--                                    <div>-->
+<!--                                        <label  class="col-sm-4   col-form-label">Keyword</label>-->
+<!--                                    </div>-->
 
 
-                                    <div class="row mb-3 text-center">
-                                        <label class="col-sm-6 col-form-label"></label>
-                                        <div class="col-sm-10">
-                                            <button th:if="${rtid==null}"  type="submit" class="btn btn-primary ">Submit Form</button>
-                                            <button th:if="${rtid!=null}"  type="submit" class="btn btn-primary ">Update Form</button>
-                                        </div>
-                                    </div>
+<!--                                    <div class="col-sm-11 col-md-11">-->
+<!--                                        <input type="text" class="form-control" th:field="*{rtKey}"/>-->
+<!--                                    </div>-->
 
 
-                                </form>
+<!--                                    <div class="row mb-3 text-center">-->
+<!--                                        <label class="col-sm-6 col-form-label"></label>-->
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <button th:if="${rtid==null}"  type="submit" class="btn btn-primary ">Submit Form</button>-->
+<!--                                            <button th:if="${rtid!=null}"  type="submit" class="btn btn-primary ">Update Form</button>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
-                            </div>
+
+<!--                                </form>-->
+
+<!--                            </div>-->
 
 
                             <div class="card-body  col-md-12 col-sm-12">

@@ -16,16 +16,13 @@ public class HotelFacilities {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int hfacid;
 
-    @Column(length = 60, nullable = false)
+    @Column(length = 60,nullable = false)
     private String hfacname;
 
-    @Column(length = 60, nullable = false)
+    @Column(length = 60,nullable = false)
     private String hfacdiscription;
 
-    @Column(length = 60, nullable = false)
+    @Column(length = 60,nullable = false)
     private String hfackeyword;
-
-
-
 
 }

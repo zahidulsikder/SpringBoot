@@ -25,5 +25,4 @@ public class Roomtype {
     @Column(length = 30)
     private  String rtKey;
 
-
 }

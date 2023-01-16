@@ -1,6 +1,5 @@
 package org.idb.Tourism.controller;
 
-import org.idb.Tourism.entity.Hotel;
 import org.idb.Tourism.entity.Room;
 import org.idb.Tourism.service.HotelService;
 import org.idb.Tourism.service.RoomFacilitiesService;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 @Controller
 public class RoomController {
@@ -36,8 +37,23 @@ public class RoomController {
         return "roomhome";
     }
 //----------------- save for room from--------------------
-    @RequestMapping("/room_list")
+
+
+    @RequestMapping("/room_form")
     public String addRoomForm(Model m){
+        m.addAttribute("room" , new Room());
+        m.addAttribute("roomlist" , roomService.getAllRoom());
+        m.addAttribute("roomtypelist" , roomtypeService.getAllRoomtype());
+        m.addAttribute("roomfaclist" , roomFacilitiesService.getAllRoomFacilities());
+        m.addAttribute("hotellist" , hotelService.getAllHotel());
+
+
+        return "room-form";
+    }
+
+
+    @RequestMapping("/room_list")
+    public String roomList(Model m){
         m.addAttribute("roomlist" , roomService.getAllRoom());
         m.addAttribute("roomtypelist" , roomtypeService.getAllRoomtype());
         m.addAttribute("roomfaclist" , roomFacilitiesService.getAllRoomFacilities());
@@ -50,7 +66,7 @@ public class RoomController {
     @RequestMapping(value = "/add_room", method = RequestMethod.POST)
     public  String roomSave(@ModelAttribute("room") Room r, Model m){
         roomService.saveRoom(r);
-        return "redirect:/room_list";
+        return "redirect:/room_form";
     }
     @RequestMapping("/delete_room/{rId}")
     public String deleteRoom(@PathVariable("rId") Integer rId){
@@ -65,10 +81,8 @@ public class RoomController {
         m.addAttribute("roomtypelist", roomtypeService.getAllRoomtype());
         m.addAttribute("roomfaclist", roomFacilitiesService.getAllRoomFacilities());
         m.addAttribute("hotellist", hotelService.getAllHotel());
-        return "roomlist";
+        return "room-form";
     }
-
-
 
 //-------------------------------------------------------------------------------------
 

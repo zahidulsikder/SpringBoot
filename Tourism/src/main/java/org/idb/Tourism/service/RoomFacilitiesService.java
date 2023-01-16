@@ -1,9 +1,7 @@
 package org.idb.Tourism.service;
 
 
-import org.idb.Tourism.entity.Inventory;
 import org.idb.Tourism.entity.RoomFacilities;
-import org.idb.Tourism.repository.IInventoryRepo;
 import org.idb.Tourism.repository.IRoomFacilitiesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

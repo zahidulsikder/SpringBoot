@@ -2,8 +2,6 @@ package org.idb.Tourism.controller;
 
 
 import org.idb.Tourism.entity.Location;
-import org.idb.Tourism.entity.RoomFacilities;
-import org.idb.Tourism.service.HotelService;
 import org.idb.Tourism.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

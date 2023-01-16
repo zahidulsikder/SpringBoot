@@ -28,4 +28,6 @@ public class RoomService {
     public  Room findRoomById(int rId){
         return iRoomRepo.findById(rId).get();
     }
+
+
 }

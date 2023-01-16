@@ -15,6 +15,13 @@ public class RoomtypeController {
     @Autowired
     RoomtypeService roomtypeService;
 
+    @RequestMapping("/roomtype_form")
+    public  String roomtypeForm(Model m){
+        m.addAttribute("roomtype", new Roomtype());
+        m.addAttribute("allrtype", roomtypeService.getAllRoomtype());
+
+        return "roomtype-form";
+    }
 
     @RequestMapping("/all_roomtype_list")
     public  String roomtypeList(Model m){
@@ -39,7 +46,7 @@ public class RoomtypeController {
     public String updateRoomtype(@PathVariable("rtid") Integer rtid, Model m){
         Roomtype rt = roomtypeService.findByIdRoomType(rtid);
         m.addAttribute("roomtype", rt);
-        return "roomtypelist";
+        return "roomtype-form";
     }
 
 }
